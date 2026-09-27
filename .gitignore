@@ -3,3 +3,10 @@ __pycache__/
 *.pyc
 *.pem
 .env
+
+.ssh/
+venv/
+__pycache__/
+*.pyc
+.env
+*.pem
