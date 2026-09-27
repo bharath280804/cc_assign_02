@@ -1,0 +1,173 @@
+cat > /home/ubuntu/flaskapp/templates/register.html <<'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #fdf6f0, #f7ebe6);
+            color: #3d2c2e;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: auto;
+            background: #fffaf8;
+            padding: 34px;
+            border-radius: 18px;
+            box-shadow: 0 10px 28px rgba(93, 64, 55, 0.12);
+            border: 1px solid #f0dfd8;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #6d3b47;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8a6a70;
+            margin-bottom: 26px;
+            font-size: 15px;
+        }
+
+        label {
+            display: block;
+            margin: 14px 0 7px;
+            font-weight: 600;
+            color: #5c4046;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #dec8c2;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background: #fff;
+            transition: 0.2s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #b76e79;
+            box-shadow: 0 0 0 3px rgba(183, 110, 121, 0.15);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .file-box {
+            margin-top: 8px;
+            margin-bottom: 22px;
+            padding: 14px;
+            background: #fdf2ef;
+            border: 1px dashed #d9b7af;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #8b4f5d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: #733d4a;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .link a {
+            color: #8b4f5d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 700px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 24px;
+            }
+
+            h2 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your Account</h2>
+        <div class="subtitle">Fill in your details below to register and upload your text file.</div>
+
+        <form action="/register" method="POST" enctype="multipart/form-data">
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <div class="row">
+                <div>
+                    <label>First Name</label>
+                    <input type="text" name="firstname" required>
+                </div>
+                <div>
+                    <label>Last Name</label>
+                    <input type="text" name="lastname" required>
+                </div>
+            </div>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Address</label>
+            <textarea name="address" required></textarea>
+
+            <label>Upload Limerick (1).txt</label>
+            <div class="file-box">
+                <input type="file" name="limerick_file" accept=".txt">
+            </div>
+
+            <button type="submit">Register Now</button>
+        </form>
+
+        <div class="link">
+            <a href="/login">Already registered? Re-login here</a>
+        </div>
+    </div>
+</body>
+</html>
+EOF

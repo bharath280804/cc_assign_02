@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #fdf6f0, #f7ebe6);
+            color: #3d2c2e;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: auto;
+            background: #fffaf8;
+            padding: 36px;
+            border-radius: 18px;
+            box-shadow: 0 10px 28px rgba(93, 64, 55, 0.12);
+            border: 1px solid #f0dfd8;
+        }
+
+        h2 {
+            text-align: center;
+            color: #6d3b47;
+            margin-bottom: 26px;
+            font-size: 30px;
+        }
+
+        .info-card {
+            background: #fff3ef;
+            border: 1px solid #ecd5cf;
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .info-row {
+            padding: 10px 0;
+            border-bottom: 1px solid #ead7d2;
+            font-size: 16px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            font-weight: 700;
+            color: #5f3440;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 18px;
+            background: #8b4f5d;
+            color: white;
+            padding: 11px 18px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #733d4a;
+        }
+
+        .bottom-link {
+            margin-top: 26px;
+            text-align: center;
+        }
+
+        .bottom-link a {
+            color: #8b4f5d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .bottom-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Information</h2>
+
+        <div class="info-card">
+            <div class="info-row"><span class="label">Username:</span> {{ user['username'] }}</div>
+            <div class="info-row"><span class="label">First Name:</span> {{ user['firstname'] }}</div>
+            <div class="info-row"><span class="label">Last Name:</span> {{ user['lastname'] }}</div>
+            <div class="info-row"><span class="label">Email:</span> {{ user['email'] }}</div>
+            <div class="info-row"><span class="label">Address:</span> {{ user['address'] }}</div>
+
+            {% if user['filename'] %}
+                <div class="info-row"><span class="label">Uploaded File:</span> {{ user['filename'] }}</div>
+                <div class="info-row"><span class="label">Word Count:</span> {{ user['wordcount'] }}</div>
+                <a class="btn" href="/download/{{ user['filename'] }}">Download File</a>
+            {% else %}
+                <div class="info-row"><span class="label">Uploaded File:</span> No file uploaded</div>
+            {% endif %}
+        </div>
+
+        <div class="bottom-link">
+            <a href="/login">Go to Re-Login Page</a>
+        </div>
+    </div>
+</body>
+</html>
